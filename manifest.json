@@ -1,0 +1,25 @@
+{
+    "name": "Image to text to clipboard",
+    "description": "Right click to detect text in image and add to clipboard",
+    "version": "0.2",
+    "permissions": [
+        "activeTab",
+        "contextMenus"
+    ],
+    "background": {
+        "scripts": [
+            "js/tesseract.min.js",
+            "sample.js"
+        ]
+    },
+    "content_scripts": [{
+        "matches": ["https://*/*"],
+        "js": ["content.js"]
+    }],
+    "web_accessible_resources": [
+        "js/worker.min.js",
+        "js/tessearct-core.wasm.js",
+        "traineddata/*.traineddata.gz"
+    ],
+    "manifest_version": 1
+}
