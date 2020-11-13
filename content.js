@@ -2,9 +2,9 @@ var clickedEl = null;
 
 document.addEventListener("contextmenu", function(event){
     clickedEl = event.target;
-    console.log(clickedEl)
-    console.log(clickedEl.value)
-    console.log(clickedEl.text)
+    // console.log(clickedEl)
+    // console.log(clickedEl.value)
+    // console.log(clickedEl.text)
     console.log("clicked")
     
 }, true);
@@ -13,13 +13,14 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     console.log(clickedEl==null)
     console.log(typeof(clickedEl))
     if(request == "getClickedEl") {
-        let encoded = getBase64Image(clickedEl);
-        console.log(encoded);
-        sendResponse({value: encoded});
+        try{
+            let encoded = getBase64Image(clickedEl);
+            console.log(encoded);
+            sendResponse({value: encoded});
+        } catch(e){
+            sendResponse({value: null});
+        }
     } else {
-        // let encoded = getBase64Image(clickedEl);
-        // console.log(encoded);
-        // console.log(request.text);
         let textarea = document.createElement('textarea');
         textarea.setAttribute('type', 'hidden');
         textarea.textContent = request.text;
