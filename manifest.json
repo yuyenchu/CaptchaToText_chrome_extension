@@ -1,7 +1,7 @@
 {
     "name": "Image to text to clipboard",
     "description": "Right click to detect text in image and add to clipboard",
-    "version": "0.2",
+    "version": "0.3",
     "permissions": [
         "activeTab",
         "contextMenus"
